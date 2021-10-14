@@ -8,23 +8,23 @@ const yamlFixture = path.join("tests", "fixtures", yamlFixtureFile);
 describe("Basic conversion", () => {
     test("To typescript", async () => {
         const fixtureContent = (await fs.readFile(yamlFixture, "utf-8")).toString();
-        const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "ts"), "utf-8")).toString();
+        const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "ts"), "utf-8")).toString().replace(/\r?\n|\r/g, " ");
         const {outPath, outContent} = yaml2jsish.convertFile(yamlFixtureFile, fixtureContent, {type: "ts"});
-        expect(outContent).toMatch(fixtureExpected);
+        expect(outContent.replace(/\r?\n|\r/g, " ")).toEqual(fixtureExpected);
         expect(outPath).toEqual("foo.ts");
     });
     test("To javascript", async () => {
         const fixtureContent = (await fs.readFile(yamlFixture, "utf-8")).toString();
-        const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "js"), "utf-8")).toString();
+        const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "js"), "utf-8")).toString().replace(/\r?\n|\r/g, " ");
         const {outPath, outContent} = yaml2jsish.convertFile(yamlFixtureFile, fixtureContent, {type: "js"});
-        expect(outContent).toMatch(fixtureExpected);
+        expect(outContent.replace(/\r?\n|\r/g, " ")).toEqual(fixtureExpected);
         expect(outPath).toEqual("foo.js");
     });
     test("To json", async () => {
         const fixtureContent = (await fs.readFile(yamlFixture, "utf-8")).toString();
-        const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "json"), "utf-8")).toString();
+        const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "json"), "utf-8")).toString().replace(/\r?\n|\r/g, " ");
         const {outPath, outContent} = yaml2jsish.convertFile(yamlFixtureFile, fixtureContent, {type: "json"});
-        expect(outContent).toMatch(fixtureExpected);
+        expect(outContent.replace(/\r?\n|\r/g, " ")).toEqual(fixtureExpected);
         expect(outPath).toEqual("foo.json");
     });
 });
