@@ -10,21 +10,21 @@ describe("Basic conversion", () => {
         const fixtureContent = (await fs.readFile(yamlFixture, "utf-8")).toString();
         const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "ts"), "utf-8")).toString();
         const {outPath, outContent} = yaml2jsish.convertFile(yamlFixtureFile, fixtureContent, {type: "ts"});
-        expect(outContent).toEqual(fixtureExpected);
+        expect(outContent).toMatch(fixtureExpected);
         expect(outPath).toEqual("foo.ts");
     });
     test("To javascript", async () => {
         const fixtureContent = (await fs.readFile(yamlFixture, "utf-8")).toString();
         const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "js"), "utf-8")).toString();
         const {outPath, outContent} = yaml2jsish.convertFile(yamlFixtureFile, fixtureContent, {type: "js"});
-        expect(outContent).toEqual(fixtureExpected);
+        expect(outContent).toMatch(fixtureExpected);
         expect(outPath).toEqual("foo.js");
     });
     test("To json", async () => {
         const fixtureContent = (await fs.readFile(yamlFixture, "utf-8")).toString();
         const fixtureExpected= (await fs.readFile(yamlFixture.replace(/yaml$/, "json"), "utf-8")).toString();
         const {outPath, outContent} = yaml2jsish.convertFile(yamlFixtureFile, fixtureContent, {type: "json"});
-        expect(outContent).toEqual(fixtureExpected);
+        expect(outContent).toMatch(fixtureExpected);
         expect(outPath).toEqual("foo.json");
     });
 });
