@@ -12,7 +12,7 @@
     "rulesDirectory": [],
     "linterOptions": {
         "exclude": [
-            "tests/fixtures/**"
+            "tests/fixtures/**/*.ts"
         ]
     }
 }

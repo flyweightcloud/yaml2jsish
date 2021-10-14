@@ -6,8 +6,8 @@
   "bin": "lib/cli.js",
   "scripts": {
     "build": "rimraf lib && tsc",
-    "lint": "tslint src/**/*.ts tests/**/*.ts",
-    "lint:fix": "tslint src/**/*.ts tests/**/*.ts --fix",
+    "lint": "tslint src/**/*.ts tests/**/*.ts tests/**/*.*.ts",
+    "lint:fix": "tslint src/**/*.ts tests/**/*.ts tests/**/*.*.ts --fix",
     "test": "jest --config jestconfig.json",
     "deploy": "npm run lint && npm run build && npm publish --access public"
   },
