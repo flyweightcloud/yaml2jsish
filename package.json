@@ -1,6 +1,6 @@
 {
   "name": "@flyweight.cloud/yaml2jsish",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Basic conversion of YAML to JSON/TS/JS with glob support",
   "main": "lib/index.js",
   "bin": "lib/cli.js",
